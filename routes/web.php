@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,29 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::middleware(['checkActive'])->group(function () {
+Route::middleware(['checkActive', 'auth'])->group(function () {
 
-    Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index')->name('home');
+
+
+    Route::redirect('/', '/dashboard', 301);
+
+    Route::get('/dashboard', function () {
+        if (Auth::user()->admin) {
+            return redirect('/admin');
+        }
+
+        return redirect('/painel');
+    });
+
+
+    Route::namespace('Admin')->group(function () {
+        Route::get('/admin', 'HomeController@index')->name('admin.dashboard');
+        Route::resource('/users', 'UserController');
+        Route::post('/admin/users/{id}', 'ToggleUserActivationController@update')->name('users.toggleActive');
+    });
+
+    Route::namespace('User')->group(function () {
+        Route::get('/painel', 'HomeController@index')->name('user.dashboard');
+    });
+
 });

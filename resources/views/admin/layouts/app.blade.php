@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('master')
 
 @section('app')
     {{-- Page Wrapper --}}
@@ -6,7 +6,7 @@
 
 
         {{-- Sidebar --}}
-        @include('layouts.partials.sidebar')
+        @include('admin.layouts.sidebar')
 
         {{-- Content Wrapper --}}
         <div id="content-wrapper" class="d-flex flex-column">
@@ -15,7 +15,7 @@
             <div id="content">
 
                 {{-- Topbar --}}
-                @include('layouts.partials.topbar')
+                @include('admin.layouts.topbar')
 
                 {{-- Page Content --}}
                 <div class="container-fluid">
@@ -23,6 +23,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">@yield('page-title', 'Dashboard')</h1>
+                        @yield('page-header')
 
                     </div>
 
@@ -34,7 +35,7 @@
             </div>
             {{-- End Main Content --}}
 
-            @include('layouts.partials.footer')
+            @include('admin.layouts.footer')
 
         </div>
         {{-- End Content Wrapper --}}

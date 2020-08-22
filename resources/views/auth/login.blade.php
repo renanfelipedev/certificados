@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('master')
 
 @section('app')
 
@@ -27,6 +27,7 @@
                                             </div>
                                         @endif
                                     </div>
+
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         @csrf
 
