@@ -20,13 +20,16 @@
                                         <h1 class="h4 text-gray-900 mb-4">{{ __('Login') }}</h1>
                                     </div>
 
-                                    <div class="text-center">
-                                        @if (session('error'))
-                                            <div class="alert alert-danger">
+                                    @if (session('error'))
+                                        <div class="text-center">
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                                 {{ session('error') }}
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
                                             </div>
-                                        @endif
-                                    </div>
+                                        </div>
+                                    @endif
 
                                     <form class="user" method="POST" action="{{ route('login') }}">
                                         @csrf
