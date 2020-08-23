@@ -14,4 +14,9 @@ class Company extends Model
     protected $fillable = [
         'name', 'cnpj', 'addres', 'user_id',
     ];
+
+    public function owner()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

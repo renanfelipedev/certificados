@@ -23,6 +23,7 @@ Route::middleware(['checkActive', 'auth'])->group(function () {
 
 
     Route::redirect('/', '/dashboard', 301);
+    Route::redirect('/home', '/dashboard', 301);
 
     Route::get('/dashboard', function () {
         if (Auth::user()->admin) {

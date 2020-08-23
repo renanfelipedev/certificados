@@ -1,4 +1,4 @@
-@if(count($users) > 0)
+@if (count($users) > 0)
     <div class="card shadow">
 
         <a href="#usersList" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false"

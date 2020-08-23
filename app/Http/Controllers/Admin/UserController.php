@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\DB;
 
 use App\User;
+use App\Models\Company;
 
 class UserController extends Controller
 {
@@ -44,7 +47,12 @@ class UserController extends Controller
             'name' => ['required', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:6'],
+            'company_name' => ['required_unless:admin,on', 'max:255'],
+            'company_cnpj' => ['required_unless:admin,on', 'max:255'],
+            'company_address' => ['required_unless:admin,on'],
         ]);
+
+        DB::beginTransaction();
 
         $user = new User;
 
@@ -56,11 +64,23 @@ class UserController extends Controller
             $user->admin = true;
         }
 
-        if($request->active) {
+        if ($request->active) {
             $user->active = true;
         }
 
         $user->save();
+
+        if (!$request->admin) {
+            $company = new Company;
+
+            $company->name = $request->company_name;
+            $company->address = $request->company_address;
+            $company->cnpj = $request->company_cnpj;
+
+            $user->company()->save($company);
+        }
+
+        DB::commit();
 
         return redirect()->route('users.index');
     }

@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public function company()
+    {
+        return $this->hasOne('App\Models\Company');
+    }
 }
