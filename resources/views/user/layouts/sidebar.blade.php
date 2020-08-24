@@ -16,16 +16,24 @@
     <li class="nav-item active">
         <a class="nav-link" href="{{ url('/') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Dashboard</span>
+        </a>
     </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
 
+
     <!-- Heading -->
-    {{-- <div class="sidebar-heading">
-        Gestão de clientes
-    </div> --}}
+    <div class="sidebar-heading">
+        Gestão de atividades
+    </div>
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('activities.index') }}">
+            <i class="fas fa-fw fa-copy"></i>
+            <span>Atividades</span>
+        </a>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     {{-- <li class="nav-item">
@@ -46,7 +54,8 @@
 
 
     <!-- Divider -->
-    {{-- <hr class="sidebar-divider"> --}}
+    {{--
+    <hr class="sidebar-divider"> --}}
 
 
 
