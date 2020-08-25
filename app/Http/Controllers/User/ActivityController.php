@@ -16,7 +16,11 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return view('user.pages.activities.index');
+        $activities = Activity::orderBy('created_at')->get();
+
+        return view('user.pages.activities.index', [
+            'activities' => $activities
+        ]);
     }
 
     /**
@@ -70,7 +74,10 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $activity = Activity::find($id);
+        return view('user.pages.activities.edit', [
+            'activity' => $activity,
+        ]);
     }
 
     /**
@@ -82,7 +89,20 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:255'],
+            'workload' => ['required', 'numeric', 'min:1'],
+            'start' => ['required', 'date'],
+            'end' => ['required', 'date'],
+            'content' => ['required', 'string']
+        ]);
+
+        $activity = Activity::find($id);
+
+        $activity->update($request->all());
+
+        return redirect()->route('activities.index');
     }
 
     /**
@@ -93,6 +113,10 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $activity = Activity::find($id);
+
+        $activity->delete();
+
+        return redirect()->route('activities.index');
     }
 }

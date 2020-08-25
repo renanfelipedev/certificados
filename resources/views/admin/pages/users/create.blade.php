@@ -55,14 +55,15 @@
 
                     <div class="form-group col-lg-12 col-md-12">
                         <div class="custom-control custom-switch">
-                            <input name="admin" type="checkbox" class="custom-control-input" id="administratorSwitch">
+                            <input name="admin" type="checkbox" class="custom-control-input" id="administratorSwitch"
+                                {{ old('admin') ? 'checked' : '' }}>
                             <label class="custom-control-label" for="administratorSwitch">Administrador</label>
                         </div>
                     </div>
 
                     <div class="form-group col-lg-12 col-md-12">
                         <div class="custom-control custom-switch">
-                            <input name="active" type="checkbox" class="custom-control-input" id="activeSwitch" checked>
+                            <input name="active" type="checkbox" class="custom-control-input" id="activeSwitch" checked >
                             <label class="custom-control-label" for="activeSwitch">Ativado</label>
                         </div>
                     </div>

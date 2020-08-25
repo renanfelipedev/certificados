@@ -9,7 +9,7 @@
 
         <div class="collapse show" id="usersList">
             <div class="card-body table-responsive-md">
-                <table class="table table-hover table-borderless ">
+                <table class="table table-hover table-borderless table-sm">
                     <thead>
                         <tr>
                             <th>Nome</th>
