@@ -52,10 +52,17 @@
                                     <td>{{ $activity->type }}</td>
                                     <td>{{ $activity->title }}</td>
                                     <td>{{ $activity->workload }} Horas</td>
-                                    <td>{{ date("d/m/Y", strtotime($activity->start)) }}</td>
-                                    <td>{{ date("d/m/Y", strtotime($activity->end)) }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($activity->start)) }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($activity->end)) }}</td>
                                     <td>
-                                        <button class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal"
+                                        <a href="{{ route('student.create', $activity->id) }}" class="btn btn-primary btn-icon-split m-1">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-user-plus"></i>
+                                            </span>
+                                            <span class="text">Cadastrar alunos</span>
+                                        </a>
+
+                                        <button class="btn btn-secondary btn-icon-split m-1" data-toggle="modal"
                                             data-target="#activitiesShowModal-{{ $activity->id }}">
                                             <span class="icon text-white-50">
                                                 <i class="fa fa-search"></i>
@@ -65,10 +72,9 @@
                                             </span>
                                         </button>
 
-                                        @include('user.pages.activities.show')
 
                                         <a href="{{ route('activities.edit', $activity->id) }}"
-                                            class="btn btn-primary btn-icon-split btn-sm">
+                                            class="btn btn-secondary btn-icon-split m-1 ">
                                             <span class="icon text-white-50">
                                                 <i class="fa fa-edit"></i>
                                             </span>
@@ -77,7 +83,7 @@
                                             </span>
                                         </a>
 
-                                        <a href="#" class="btn btn-danger btn-icon-split btn-sm" data-toggle="modal"
+                                        <a href="#" class="btn btn-danger btn-icon-split m-1 " data-toggle="modal"
                                             data-target="#deleteModal-{{ $activity->id }}">
                                             <span class="icon text-white-50">
                                                 <i class="fa fa-trash"></i>
@@ -86,6 +92,8 @@
                                                 Excluir
                                             </span>
                                         </a>
+
+                                        @include('user.pages.activities.show')
 
                                         <x-delete-modal modalId="deleteModal-{{ $activity->id }}"
                                             message="Deseja realmente excluir?" btnText="Excluir"
