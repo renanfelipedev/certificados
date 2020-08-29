@@ -18,8 +18,12 @@ class CreateCompaniesTable extends Migration
             $table->string('address');
             $table->string('cnpj');
             $table->string('name');
+            $table->string('contact')->nullable();
+            $table->string('site')->nullable();
+
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

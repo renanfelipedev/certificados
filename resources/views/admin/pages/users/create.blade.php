@@ -87,6 +87,18 @@
                     </div>
 
                     <div class="form-group col-lg-4 col-md-12">
+                        <label class="text-gray-600" for="company_cnpj">CNPJ</label>
+                        <input type="text" name="company_cnpj" id="company_cnpj"
+                            class="form-control @error('company_cnpj') is-invalid @enderror"
+                            value="{{ old('company_cnpj') }}">
+                        @error('company_cnpj')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
                         <label class="text-gray-600" for="company_address">Endereço</label>
                         <input type="text" name="company_address" id="company_address"
                             class="form-control @error('company_address') is-invalid @enderror"
@@ -99,11 +111,23 @@
                     </div>
 
                     <div class="form-group col-lg-4 col-md-12">
-                        <label class="text-gray-600" for="company_cnpj">CNPJ</label>
-                        <input type="text" name="company_cnpj" id="company_cnpj"
-                            class="form-control @error('company_cnpj') is-invalid @enderror"
-                            value="{{ old('company_cnpj') }}">
-                        @error('company_cnpj')
+                        <label class="text-gray-600" for="company_address">Site</label>
+                        <input type="text" name="company_site" id="company_site"
+                            class="form-control @error('company_site') is-invalid @enderror"
+                            value="{{ old('company_site') }}">
+                        @error('company_site')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group col-lg-4 col-md-12">
+                        <label class="text-gray-600" for="company_contact">Telefone para contato</label>
+                        <input type="text" name="company_contact" id="company_contact"
+                            class="form-control @error('company_contact') is-invalid @enderror"
+                            value="{{ old('company_contact') }}">
+                        @error('company_contact')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

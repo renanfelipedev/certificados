@@ -16,7 +16,7 @@
                     <div class="form-row">
                         <div class="form-group col-sm-12">
                             <label class="col-form-label">Tipo de Atividade</label>
-                            <input type="text" class="form-control" readonly value="{{ $activity->type }}">
+                            <input type="text" class="form-control" readonly value="{{ $activity->type->title }}">
                         </div>
 
                         <div class="form-group col-sm-12">
@@ -27,16 +27,6 @@
                         <div class="form-group col-sm-12">
                             <label class="col-form-label">Carga Horária</label>
                             <input type="text" class="form-control" readonly value="{{ $activity->workload }} Horas">
-                        </div>
-
-                        <div class="form-group col-sm-6">
-                            <label class="col-form-label">Data de início</label>
-                            <input type="date" class="form-control" readonly value="{{ $activity->start }}">
-                        </div>
-
-                        <div class="form-group col-sm-6">
-                            <label class="col-form-label">Data de término</label>
-                            <input type="date" class="form-control" readonly value="{{ $activity->end }}">
                         </div>
 
                         <div class="form-group col-sm-12">

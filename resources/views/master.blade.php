@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body id="page-top" class="bg-gradient-primary">
+<body id="page-top" class="bg-gradient-light">
 
     @yield('app')
 

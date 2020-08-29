@@ -14,6 +14,13 @@ class Activity extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'content', 'workload', 'type', 'user_id', 'start', 'end',
+        'title', 'description', 'content', 'workload', 'activity_type_id', 'user_id',
     ];
+
+    protected $with = ['type'];
+
+    public function type()
+    {
+        return $this->hasOne('App\Models\ActivityType', 'id', 'activity_type_id');
+    }
 }

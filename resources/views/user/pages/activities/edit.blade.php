@@ -37,13 +37,21 @@
                     <div class="form-row">
 
                         <div class="form-group col-lg-3 col-md-4">
-                            <label for="type" class="text-gray-700">Tipo </label>
-                            <input type="text" name="type" class="form-control @error('type') is-invalid @enderror"
-                                id="type" autofocus value="{{ old('type', $activity->type) }}">
+                            <label for="activity_type_id" class="text-gray-700">Tipo </label>
+
+                            <select name="activity_type_id" id="activity_type_id"
+                                class="form-control @error('activity_type_id') is-invalid @enderror">
+                                <option value="" selected disabled></option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}"
+                                        {{ old('activity_type_id', $activity->type->id) == $type->id ? 'selected' : '' }}>
+                                        {{ $type->title }}</option>
+                                @endforeach
+                            </select>
                             <small id="passwordHelpBlock" class="form-text text-muted">
                                 Curso | Treinamento | Oficina
                             </small>
-                            @error('type')
+                            @error('activity_type_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -88,27 +96,7 @@
                     <hr>
 
                     <div class="form-row">
-                        <div class="form-group col-lg-2 col-md-4 col-sm-6">
-                            <label for="start" class="text-gray-700">Data de início</label>
-                            <input type="date" name="start" class="form-control @error('start') is-invalid @enderror"
-                                id="start" value="{{ old('start', $activity->start) }}">
-                            @error('start')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
 
-                        <div class="form-group col-lg-2 col-md-4 col-sm-6">
-                            <label for="end" class="text-gray-700">Data de Término</label>
-                            <input type="date" name="end" class="form-control @error('end') is-invalid @enderror" id="end"
-                                value="{{ old('end', $activity->end) }}">
-                            @error('end')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
 
                         <div class="form-group col-lg-12">
                             <label for="editor" class="text-gray-700">Conteúdo Programático</label>
@@ -125,10 +113,10 @@
                             <label class="text-gray-600" for=""></label>
                             <button type="submit" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-check"></i>
                                 </span>
                                 <span class="text">
-                                    Cadastrar Atividade
+                                    Atualizar Atividade
                                 </span>
                             </button>
                         </div>

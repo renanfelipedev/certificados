@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AdminUserSeeder::class,
-            DefaultUserSeeder::class
+            DefaultUserSeeder::class,
+            ActivityTypesSeeder::class,
         ]);
     }
 }

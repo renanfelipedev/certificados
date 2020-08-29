@@ -1,12 +1,12 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
-        <div class="sidebar-brand-icon rotate-n-15">
+        {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-check"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">{{ config('app.name', 'Laravel') }}</div>
+        </div> --}}
+        <div class="sidebar-brand-text mx-3 text-lg">CertFree</div>
     </a>
 
     <!-- Divider -->
@@ -24,7 +24,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Gestão de clientes
+        Cadastros
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->

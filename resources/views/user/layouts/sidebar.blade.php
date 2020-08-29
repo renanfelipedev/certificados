@@ -1,12 +1,12 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/') }}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-check"></i>
+            <i class="fas fa-file"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">{{ config('app.name', 'Laravel') }}</div>
+        <div class="sidebar-brand-text mx-3 text-lg">CertFree</div>
     </a>
 
     <!-- Divider -->
@@ -23,17 +23,29 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Gestão de atividades
+    <div class="sidebar-heading ">
+        <span class="">Cadastros</span>
     </div>
+
     <li class="nav-item active">
         <a class="nav-link" href="{{ route('activities.index') }}">
             <i class="fas fa-fw fa-copy"></i>
             <span>Atividades</span>
         </a>
     </li>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="{{ route('turmas.index') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Turmas</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
     {{-- <li class="nav-item">

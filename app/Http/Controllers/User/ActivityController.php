@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Activity;
+use App\Models\ActivityType;
 
 class ActivityController extends Controller
 {
@@ -30,7 +31,11 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        return view('user.pages.activities.create');
+        $activity_types = ActivityType::orderBy('title')->get();
+
+        return view('user.pages.activities.create', [
+            'types' => $activity_types,
+        ]);
     }
 
     /**
@@ -43,27 +48,15 @@ class ActivityController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'type' => ['required', 'string', 'max:255'],
             'workload' => ['required', 'numeric', 'min:1'],
-            'start' => ['required', 'date'],
-            'end' => ['required', 'date'],
+            'activity_type_id' => ['required', 'numeric'],
             'content' => ['required', 'string']
         ]);
+
 
         $request->user()->activities()->create($request->all());
 
         return redirect()->route('activities.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -74,9 +67,12 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-        $activity = Activity::find($id);
+        $activity = Activity::with('type')->find($id);
+        $types = ActivityType::orderBy('title')->get();
+
         return view('user.pages.activities.edit', [
             'activity' => $activity,
+            'types' => $types,
         ]);
     }
 
@@ -91,10 +87,8 @@ class ActivityController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'type' => ['required', 'string', 'max:255'],
             'workload' => ['required', 'numeric', 'min:1'],
-            'start' => ['required', 'date'],
-            'end' => ['required', 'date'],
+            'activity_type_id' => ['required', 'numeric'],
             'content' => ['required', 'string']
         ]);
 

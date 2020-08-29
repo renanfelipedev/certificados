@@ -20,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::where('name', '<>', 'Administrador')->orderBy('name')->get();
+        $users = User::all();
 
         return view('admin.pages.users.index', compact('users'));
     }
@@ -44,7 +44,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'max:255'],
+            'name' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:6'],
             'company_name' => ['required_unless:admin,on', 'max:255'],
@@ -76,6 +76,9 @@ class UserController extends Controller
             $company->name = $request->company_name;
             $company->address = $request->company_address;
             $company->cnpj = $request->company_cnpj;
+            $company->contact = $request->company_contact;
+            $company->site = $request->site;
+
 
             $user->company()->save($company);
         }

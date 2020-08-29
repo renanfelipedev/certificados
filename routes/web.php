@@ -42,8 +42,9 @@ Route::middleware(['checkActive', 'auth'])->group(function () {
 
     Route::namespace('User')->group(function () {
         Route::get('/painel', 'HomeController@index')->name('user.dashboard');
-        Route::resource('/activities', 'ActivityController');
-        Route::resource('/activities/{id}/student', 'StudentController');
+        Route::resource('/activities', 'ActivityController')->except('show');
+        Route::get('/activities/{id}/turmas', 'User\TeamController@create');
+        Route::resource('/turmas', 'TeamController');
     });
 
 });
