@@ -21,10 +21,10 @@
 
     <div class="card shadow">
 
-        <a href="#activitiesCreate" class="d-block card-header py-3" data-toggle="collapse" role="button"
+        {{-- <a href="#activitiesCreate" class="d-block card-header py-3" data-toggle="collapse" role="button"
             aria-expanded="false" aria-controls="activitiesCreate">
             <h6 class="m-0 font-weight-bold text-primary">Cadastro de Nova atividade</h6>
-        </a>
+        </a> --}}
 
         <div class="collapse show" id="activitiesCreate">
             <div class="card-body">

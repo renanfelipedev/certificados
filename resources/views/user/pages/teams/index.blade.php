@@ -1,11 +1,16 @@
 @extends('user.layouts.app')
 
-@section('page-title', 'Gestão de Turmas')
+@section('page-title', '')
 
 @section('page-title-content')
 
-    <a href="{{ route('turmas.create') }}" class="btn  btn-success">
-        <i class="fa fa-plus"></i> Nova Turma
+    <a href="{{ route('turmas.create') }}" class="btn btn-success btn-icon-split m-1 ">
+        <span class="icon text-white-50">
+            <i class="fa fa-plus"></i>
+        </span>
+        <span class="text">
+            Cadastrar Nova Turma
+        </span>
     </a>
 
 @endsection
@@ -26,85 +31,76 @@
             <i class="fa fa-info-circle"></i> Nenhuma turma cadastrada
         </div>
     @else
-        <div class="card shadow">
-            <a href="#activitiesList" class="d-block card-header py-3" data-toggle="collapse" role="button"
-                aria-expanded="false" aria-controls="activitiesList">
-                <h6 class="m-0 font-weight-bold text-primary">Atividades Cadastradas</h6>
-            </a>
+        @foreach ($teams as $team)
+            <div class="card border-left-secondary mb-4 ">
+                <div class="card-body">
+                    <h4 class="d-flex align-items-center my-2">
+                        <strong class="mr-4">
+                            {{ $team->activity->title }}
+                        </strong>
 
-            <div class="collapse show" id="activitiesList">
+                        <span class="">
+                            <strong>Turma:</strong>
+                            {{ $team->title }}
+                        </span>
+                    </h4>
 
-                <div class="card-body table-responsive-md">
-                    <table class="table table-hover">
-                        <thead cla>
-                            <tr>
-                                <th>Identificação da Turma</th>
-                                <th>Data de Início</th>
-                                <th>Data de Término</th>
-                                <th>Atividade</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($teams as $team)
-                                <tr>
-                                    <td>Turma {{ $team->title }}</td>
-                                    <td>{{ date('d/m/Y', strtotime($team->start)) }}</td>
-                                    <td>{{ date('d/m/Y', strtotime($team->end)) }}</td>
-                                    <td>
-                                        <strong>Tipo:</strong> {{ $team->activity->type->title }}
-                                        <br>
-                                        <strong>Título:</strong> {{ $team->activity->title }}
-                                        <br>
-                                        <strong>Carga Horária:</strong> {{ $team->activity->workload }}
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-secondary btn-icon-split m-1" data-toggle="modal"
-                                            data-target="#activitiesShowModal-{{ $team->id }}">
-                                            <span class="icon text-white-50">
-                                                <i class="fa fa-search"></i>
-                                            </span>
-                                            <span class="text">
-                                                Detalhes
-                                            </span>
-                                        </button>
+                    <div class="d-flex my-3">
+                        <h5 class="mr-4">
+                            <strong>Participantes:</strong>
+                            <span class="text-gray-600">20</span>
+                        </h5>
+                        <h5 class="mr-4">
+                            <strong>Período de Realização:</strong>
+                            <span class="text-gray-600">
+                                {{ date('d/m/Y', strtotime($team->start)) }} - {{ date('d/m/Y', strtotime($team->end)) }}
+                            </span>
+                        </h5>
+                        <h5 class="mr-4">
+                            <strong>Carga Horária:</strong>
+                            <span class="text-gray-600">
+                                {{ $team->activity->workload }} Horas
+                            </span>
+                        </h5>
+                    </div>
 
-                                        <a href="{{ route('turmas.edit', $team->id) }}"
-                                            class="btn btn-secondary btn-icon-split m-1 ">
-                                            <span class="icon text-white-50">
-                                                <i class="fa fa-edit"></i>
-                                            </span>
-                                            <span class="text">
-                                                Editar
-                                            </span>
-                                        </a>
+                    <div class="d-flex">
+                        <a href="{{ route('turmas.show', $team->id) }}" class="btn btn-secondary btn-icon-split m-1">
+                            <span class="icon text-white-50">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <span class="text">
+                                Detalhes
+                            </span>
+                        </a>
 
-                                        <a href="#" class="btn btn-danger btn-icon-split m-1 " data-toggle="modal"
-                                            data-target="#deleteModal-{{ $team->id }}">
-                                            <span class="icon text-white-50">
-                                                <i class="fa fa-trash"></i>
-                                            </span>
-                                            <span class="text">
-                                                Excluir
-                                            </span>
-                                        </a>
 
-                                        <x-delete-modal modalId="deleteModal-{{ $team->id }}"
-                                            message="Deseja realmente excluir?" btnText="Excluir"
-                                            formAction="{{ route('turmas.destroy', $team->id) }}"
-                                            formName="deleteForm{{ $team->id }}" />
+                        <a href="{{ route('turmas.edit', $team->id) }}" class="btn btn-secondary btn-icon-split m-1 ">
+                            <span class="icon text-white-50">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                            <span class="text">
+                                Editar
+                            </span>
+                        </a>
 
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        <a href="#" class="btn btn-danger btn-icon-split m-1 " data-toggle="modal"
+                            data-target="#deleteModal-{{ $team->id }}">
+                            <span class="icon text-white-50">
+                                <i class="fa fa-trash"></i>
+                            </span>
+                            <span class="text">
+                                Excluir
+                            </span>
+                        </a>
+
+                        <x-delete-modal modalId="deleteModal-{{ $team->id }}" message="Deseja realmente excluir?"
+                            btnText="Excluir" formAction="{{ route('turmas.destroy', $team->id) }}"
+                            formName="deleteForm{{ $team->id }}" />
+                    </div>
                 </div>
-
             </div>
-
-        </div>
-
+        @endforeach
     @endif
 
 @endsection

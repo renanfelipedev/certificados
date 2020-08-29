@@ -1,14 +1,12 @@
 @extends('master')
 
 @section('app')
-
     <div class="container">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -22,11 +20,8 @@
 
                                     @if (session('error'))
                                         <div class="text-center">
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <div class="alert alert-danger  fade show" role="alert">
                                                 {{ session('error') }}
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                  </button>
                                             </div>
                                         </div>
                                     @endif

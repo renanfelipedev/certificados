@@ -23,4 +23,9 @@ class Activity extends Model
     {
         return $this->hasOne('App\Models\ActivityType', 'id', 'activity_type_id');
     }
+
+    public function teams()
+    {
+        return $this->hasOne('App\Models\Team');
+    }
 }

@@ -42,22 +42,41 @@ class TeamController extends Controller
         Team::create($request->all());
 
         return redirect()->route('turmas.index');
-
     }
 
     public function show($id)
     {
-        //
+        $team = Team::find($id);
+
+        return view('user.pages.teams.show');
     }
 
     public function edit($id)
     {
-        //
+        $activities = Activity::orderBy('title')->get();
+        $team = Team::find($id);
+
+        return view('user.pages.teams.edit', [
+            'activities' => $activities,
+            'team' => $team,
+        ]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'string'],
+            'certificate_text' => ['required', 'string'],
+            'start' => ['required', 'date'],
+            'end' => ['required', 'date'],
+            'activity_id' => ['required', 'numeric'],
+        ]);
+
+        $team = Team::find($id);
+
+        $team->update($request->all());
+
+        return redirect()->route('turmas.index');
     }
 
     public function destroy($id)

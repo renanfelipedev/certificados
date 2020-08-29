@@ -31,8 +31,9 @@
 
                         <div class="form-group col-sm-12">
                             <label for="message-text" class="col-form-label">Conteúdo Programático</label>
-                            <textarea readonly class="form-control" id="message-text"
-                            rows="10">{!! $activity->content !!}</textarea>
+                            <p>
+                                {!! $activity->content !!}
+                            </p>
                         </div>
 
                     </div>

@@ -1,6 +1,6 @@
 @extends('user.layouts.app')
 
-@section('page-title', 'CADASTRO DE TURMA')
+@section('page-title', 'Nova Atividade')
 
 
 
@@ -14,7 +14,7 @@
             <li class="breadcrumb-item " aria-current="page">
                 <a href="{{ route('turmas.index') }}">Turmas</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Cadastro de Turma</li>
+            <li class="breadcrumb-item active" aria-current="page">Nova Turma</li>
         </ol>
     </nav>
 
@@ -29,8 +29,9 @@
         <div class="collapse show" id="teamsCreate">
             <div class="card-body">
                 <br>
-                <form action="{{ route('turmas.store') }}" method="POST">
+                <form action="{{ route('turmas.update', $team->id) }}" method="POST">
                     @csrf
+                    @method('PUT')
 
                     <div class="form-group row">
                         <label for="activity_id" class="text-gray-700 col-lg-3 col-md-5 col-form-label">
@@ -43,7 +44,7 @@
                                 <option value="" selected disabled></option>
                                 @foreach ($activities as $activity)
                                     <option value="{{ $activity->id }}"
-                                        {{ old('activity_id') == $activity->id ? 'selected' : '' }}>
+                                        {{ old('activity_id', $team->activity->id) == $activity->id ? 'selected' : '' }}>
                                         {{ $activity->title }} - {{ $activity->workload }} Horas
                                     </option>
                                 @endforeach
@@ -64,7 +65,7 @@
                         <div class="form-group col-lg-12">
                             <label for="title">Identificação da turma</label>
                             <input type="text" name="title" id="title"
-                                class="form-control @error('title') is-invalid @enderror">
+                                class="form-control @error('title') is-invalid @enderror" value="{{ old('title', $team->title) }}">
                             @error('title')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -75,7 +76,7 @@
                         <div class="form-group col-lg-4 col-md-6 col-sm-6">
                             <label for="start" class="text-gray-700">Data de início</label>
                             <input type="date" name="start" class="form-control @error('start') is-invalid @enderror"
-                                id="start" value="{{ old('start') }}">
+                                id="start" value="{{ old('start', $team->start) }}">
                             @error('start')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -86,7 +87,7 @@
                         <div class="form-group col-lg-4 col-md-6 col-sm-6">
                             <label for="end" class="text-gray-700">Data de Término</label>
                             <input type="date" name="end" class="form-control @error('end') is-invalid @enderror" id="end"
-                                value="{{ old('end') }}">
+                                value="{{ old('end', $team->end) }}">
                             @error('end')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -97,7 +98,7 @@
                         <div class="form-group col-lg-12 my-4">
                             <label for="certificate_text">Texto do certificado</label>
                             <textarea name="certificate_text" id="certificate_text" class="form-control" cols="30"
-                                rows="10">{{ old('certificate_text') }}</textarea>
+                                rows="10">{{ old('certificate_text', $team->certificate_text) }}</textarea>
                         </div>
                     </div>
 
@@ -106,10 +107,10 @@
                             <label class="text-gray-600" for=""></label>
                             <button type="submit" class="btn btn-success btn-icon-split">
                                 <span class="icon text-white-50">
-                                    <i class="fa fa-plus"></i>
+                                    <i class="fa fa-check"></i>
                                 </span>
                                 <span class="text">
-                                    Cadastrar Nova Turma
+                                    Atualizar a Turma
                                 </span>
                             </button>
                         </div>
