@@ -170,18 +170,18 @@
                     <strong>{{ auth()->user()->name }}</strong>
                 </span>
                 <span>
-                    <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-chevron-down mr-3"></i>
                 </span>
                 {{-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> --}}
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                {{-- <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Perfil
-                </a>
+                </a> --}}
 
-                <div class="dropdown-divider"></div>
+
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="dropdown-item">

@@ -17,14 +17,14 @@
 
 @section('page-content')
 
-    <nav aria-label="breadcrumb">
+    {{-- <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ route('user.dashboard') }}">Dashboard</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">Atividades</li>
         </ol>
-    </nav>
+    </nav> --}}
 
     @if (count($activities) < 1)
         <div class="alert alert-primary">

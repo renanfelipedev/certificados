@@ -46,9 +46,11 @@ class TeamController extends Controller
 
     public function show($id)
     {
-        $team = Team::find($id);
+        $team = Team::findOrFail($id);
 
-        return view('user.pages.teams.show');
+        return view('user.pages.teams.show', [
+            'team' => $team
+        ]);
     }
 
     public function edit($id)

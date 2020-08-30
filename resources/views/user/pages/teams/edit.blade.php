@@ -1,12 +1,21 @@
 @extends('user.layouts.app')
 
-@section('page-title', 'Nova Atividade')
+@section('page-before-title-content')
+    <a href="{{ url()->previous() }}" class="btn btn-light btn-icon-split m-1">
+        <span class="icon text-white-50">
+            <i class="fa fa-arrow-left"></i>
+        </span>
+        <span class="text">
+            Voltar
+        </span>
+    </a>
+@endsection
 
-
+@section('page-title', '')
 
 @section('page-content')
 
-    <nav aria-label="breadcrumb">
+    {{-- <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ route('user.dashboard') }}">Dashboard</a>
@@ -16,10 +25,10 @@
             </li>
             <li class="breadcrumb-item active" aria-current="page">Nova Turma</li>
         </ol>
-    </nav>
+    </nav> --}}
 
 
-    <div class="card shadow">
+    <div class="card shadow border-0">
 
         {{-- <a href="#teamsCreate" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="teamsCreate">

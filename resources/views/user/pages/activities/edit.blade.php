@@ -1,12 +1,21 @@
 @extends('user.layouts.app')
 
-@section('page-title', 'Editar Atividade')
+@section('page-before-title-content')
+    <a href="{{ url()->previous() }}" class="btn btn-light btn-icon-split m-1">
+        <span class="icon text-white-50">
+            <i class="fa fa-arrow-left"></i>
+        </span>
+        <span class="text">
+            Voltar
+        </span>
+    </a>
+@endsection
 
-
+@section('page-title', '')
 
 @section('page-content')
 
-    <nav aria-label="breadcrumb">
+    {{-- <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ route('user.dashboard') }}">Dashboard</a>
@@ -16,15 +25,15 @@
             </li>
             <li class="breadcrumb-item active" aria-current="page">Editar Atividade</li>
         </ol>
-    </nav>
+    </nav> --}}
 
 
-    <div class="card shadow">
+    <div class="card shadow border-0">
 
-        <a href="#activitiesCreate" class="d-block card-header py-3" data-toggle="collapse" role="button"
+        {{-- <a href="#activitiesCreate" class="d-block card-header py-3" data-toggle="collapse" role="button"
             aria-expanded="false" aria-controls="activitiesCreate">
             <h6 class="m-0 font-weight-bold text-primary">Editar atividade</h6>
-        </a>
+        </a> --}}
 
         <div class="collapse show" id="activitiesCreate">
             <div class="card-body">
@@ -40,7 +49,7 @@
                             <label for="activity_type_id" class="text-gray-700">Tipo </label>
 
                             <select name="activity_type_id" id="activity_type_id"
-                                class="form-control @error('activity_type_id') is-invalid @enderror">
+                                class="custom-select form-control @error('activity_type_id') is-invalid @enderror">
                                 <option value="" selected disabled></option>
                                 @foreach ($types as $type)
                                     <option value="{{ $type->id }}"
@@ -48,9 +57,7 @@
                                         {{ $type->title }}</option>
                                 @endforeach
                             </select>
-                            <small id="passwordHelpBlock" class="form-text text-muted">
-                                Curso | Treinamento | Oficina
-                            </small>
+
                             @error('activity_type_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
