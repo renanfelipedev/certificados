@@ -1,4 +1,4 @@
-<div class="card shadow">
+<div class="card shadow border-0">
 
     <a href="#usersCreate" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false"
         aria-controls="usersCreate">

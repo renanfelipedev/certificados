@@ -1,5 +1,5 @@
 @if (count($users) > 0)
-    <div class="card shadow">
+    <div class="card shadow ">
 
         <a href="#usersList" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false"
             aria-controls="usersList">
@@ -16,7 +16,8 @@
                             <th>Email</th>
                             <th>Status</th>
                             <th>Tipo</th>
-                            <th>#</th>
+                            <th>Data de Cadastro</th>
+                            <th class="float-right"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +41,9 @@
                                         @endif
                                     </td>
                                     <td>
+                                        {{ date('d/m/Y', strtotime($user->created_at)) }}
+                                    </td>
+                                    <td class="float-right">
 
                                         <form action="{{ route('users.toggleActive', $user->id) }}" method="POST"
                                             id="toggleUserActivationForm-{{ $user->id }}">
@@ -47,22 +51,6 @@
                                         </form>
 
                                         <div>
-
-                                            <a href="#" class="btn btn-danger btn-icon-split btn-sm" data-toggle="modal"
-                                                data-target="#deleteModal-{{ $user->id }}">
-                                                <span class="icon text-white-50">
-                                                    <i class="fa fa-trash"></i>
-                                                </span>
-                                                <span class="text">
-                                                    Excluir
-                                                </span>
-                                            </a>
-
-                                            <x-delete-modal modalId="deleteModal-{{ $user->id }}"
-                                                message="Deseja realmente excluir?" btnText="Excluir"
-                                                formAction="{{ route('users.destroy', $user->id) }}"
-                                                formName="deleteForm{{ $user->id }}" />
-
 
                                             @if ($user->active)
 
@@ -89,6 +77,33 @@
                                                 </button>
 
                                             @endif
+
+                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-secondary btn-icon-split btn-sm m-1">
+                                                <span class="icon">
+                                                    <i class="fa fa-edit"></i>
+                                                </span>
+                                                <span class="text">
+                                                    Editar
+                                                </span>
+                                            </a>
+
+                                            <a href="#" class="btn btn-danger btn-icon-split btn-sm" data-toggle="modal"
+                                                data-target="#deleteModal-{{ $user->id }}">
+                                                <span class="icon text-white-50">
+                                                    <i class="fa fa-trash"></i>
+                                                </span>
+                                                <span class="text">
+                                                    Excluir
+                                                </span>
+                                            </a>
+
+                                            <x-delete-modal modalId="deleteModal-{{ $user->id }}"
+                                                message="Deseja realmente excluir?" btnText="Excluir"
+                                                formAction="{{ route('users.destroy', $user->id) }}"
+                                                formName="deleteForm{{ $user->id }}" />
+
+
+
                                         </div>
                                     </td>
                                 </tr>
