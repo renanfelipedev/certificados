@@ -16,11 +16,16 @@ class Team extends Model
     ];
 
     protected $with = [
-        'activity'
+        'activity', 'students'
     ];
 
     public function activity()
     {
         return $this->belongsTo('App\Models\Activity');
+    }
+
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student');
     }
 }

@@ -45,6 +45,7 @@ Route::middleware(['checkActive', 'auth'])->group(function () {
         Route::resource('/activities', 'ActivityController')->except('show');
         Route::get('/activities/{id}/turmas', 'TeamController@create');
         Route::resource('/turmas', 'TeamController');
+        Route::resource('/turmas/{id}/alunos', 'StudentController');
     });
 
 });

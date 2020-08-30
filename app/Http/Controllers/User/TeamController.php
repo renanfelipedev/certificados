@@ -49,7 +49,8 @@ class TeamController extends Controller
         $team = Team::findOrFail($id);
 
         return view('user.pages.teams.show', [
-            'team' => $team
+            'team' => $team,
+            'students' => $team->students,
         ]);
     }
 

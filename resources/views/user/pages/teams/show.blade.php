@@ -60,7 +60,7 @@
         <div class="card-body">
             <strong>Participantes: </strong>
             <div class="d-flex justify-content-center mt-4">
-                <button class="btn btn-secondary m-1">
+                <button class="btn btn-secondary m-1" data-toggle="modal" data-target="#createStudentModal">
                     Adicionar Participante
                 </button>
 
@@ -73,6 +73,8 @@
                 </button>
             </div>
 
+            @include('user.pages.students.create')
+
             <div class="d-flex mt-1">
                 <button class="btn btn-danger btn-icon-split m-1">
                     <span class="icon text-white-50">
@@ -84,54 +86,7 @@
                 </button>
             </div>
 
-            <div class="table-responsive">
-                <table class="table table-striped table-borderless table-sm mt-4 p-1">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>CPF</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @for ($i = 0; $i <= 20; $i++)
-
-                            <tr class="text-gray-600">
-                                <td>
-                                    <div class="form-check">
-                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox"
-                                            value="option1">
-                                    </div>
-                                </td>
-                                <td>Renan Felipe Brito Dantas</td>
-                                <td>renan.fb.dantas@gmail.com</td>
-                                <td class="">000.123.123-00</td>
-                                <td class="float-right">
-                                    <button class="btn btn-secondary btn-icon-split m-1">
-                                        <span class="icon text-white-50">
-                                            <i class="fa fa-edit"></i>
-                                        </span>
-                                        <span class="text">
-                                            Editar
-                                        </span>
-                                    </button>
-                                    <button class="btn btn-secondary btn-icon-split m-1">
-                                        <span class="icon text-white-50">
-                                            <i class="fa fa-print"></i>
-                                        </span>
-                                        <span class="text">
-                                            Imprimir
-                                        </span>
-                                    </button>
-                                </td>
-                            </tr>
-                        @endfor
-                    </tbody>
-                </table>
-            </div>
+            @include('user.pages.students.list')
         </div>
     </div>
 
