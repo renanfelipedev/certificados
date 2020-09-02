@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-        @forelse ($students as $student)
+            @forelse ($students as $student)
                 <tr class="text-gray-600">
                     <td>
                         <div class="form-check">
@@ -49,3 +49,4 @@
         </tbody>
     </table>
 </div>
+

@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered ">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createStudentModal">Cadastro de Participante</h5>
+                <h5 class="modal-title">Cadastro de Participante</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -16,33 +16,33 @@
                             <label for="name">Nome: </label>
                             <input type="text" name="name" id="name"
                                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-group col-lg-12">
                             <label for="cpf">CPF: </label>
                             <input type="text" name="cpf" id="cpf"
                                 class="form-control @error('cpf') is-invalid @enderror" value="{{ old('cpf') }}">
-                                @error('cpf')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            @error('cpf')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-group col-lg-12">
                             <label for="email">Email: </label>
                             <input type="email" name="email" id="email"
                                 class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-group col-lg-12">
@@ -53,11 +53,11 @@
                             <input type="date" name="birthdate" id="birthdate"
                                 class="form-control @error('birthdate') is-invalid @enderror"
                                 value="{{ old('birthdate') }}">
-                                @error('birthdate')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            @error('birthdate')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
                 </form>
@@ -76,3 +76,15 @@
         </div>
     </div>
 </div>
+
+@section('js')
+    @if (count($errors) > 1)
+        <script defer>
+            document.addEventListener('DOMContentLoaded', () => {
+                $('#createStudentModal').modal('show');
+            });
+
+        </script>
+    @endif
+
+@endsection
