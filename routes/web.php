@@ -37,13 +37,13 @@ Route::middleware(['checkActive', 'auth'])->group(function () {
     Route::namespace('Admin')->group(function () {
         Route::get('/admin', 'HomeController@index')->name('admin.dashboard');
         Route::resource('/users', 'UserController');
-        Route::post('/admin/users/active/{id}', 'ToggleUserActivationController@update')->name('users.toggleActive');
+        Route::post('/admin/users/active/{id}', 'ToggleUserActivationController')->name('users.toggleActive');
     });
 
     Route::namespace('User')->group(function () {
         Route::get('/painel', 'HomeController@index')->name('user.dashboard');
         Route::resource('/activities', 'ActivityController')->except('show');
-        Route::get('/activities/{id}/turmas', 'TeamController@create');
+        Route::get('/activities/{id}/turmas', 'AddTeamWithActivityController')->name('create.teams.with.activity');
         Route::resource('/turmas', 'TeamController');
         Route::resource('/turmas/{id}/alunos', 'StudentController');
     });

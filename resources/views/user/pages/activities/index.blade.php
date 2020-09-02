@@ -53,6 +53,19 @@
                     </div> --}}
 
                     <div class="d-flex w-100">
+                        <a href="{{ route('create.teams.with.activity', $activity->id) }}"
+                            class="btn btn-secondary btn-icon-split m-1">
+                            <span class="icon text-white-50">
+                                <i class="fa fa-plus"></i>
+                            </span>
+                            <span class="text">
+                                Adicionar Turma
+                            </span>
+                            <span class="icon text-white-50">
+                                <i class="fa fa-info"></i>
+                            </span>
+                        </a>
+
                         <button class="btn btn-secondary btn-icon-split m-1" data-toggle="modal"
                             data-target="#activitiesShowModal-{{ $activity->id }}">
                             <span class="icon text-white-50">

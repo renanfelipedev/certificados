@@ -27,13 +27,13 @@
 
     @yield('app')
 
-    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js" ></script>
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('editor', {
             language: 'pt-BR'
         })
-    </script>
 
+    </script>
 
     @stack('scripts')
 </body>

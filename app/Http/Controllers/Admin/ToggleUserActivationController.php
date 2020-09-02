@@ -9,8 +9,8 @@ use App\User;
 
 class ToggleUserActivationController extends Controller
 {
-    public function update(Request $request, $id) {
-
+    public function __invoke($id)
+    {
         $user = User::find($id);
 
         $user->active = !$user->active;
@@ -18,6 +18,5 @@ class ToggleUserActivationController extends Controller
         $user->save();
 
         return redirect()->route('users.index');
-
     }
 }
