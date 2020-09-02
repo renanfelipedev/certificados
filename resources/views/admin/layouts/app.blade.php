@@ -1,5 +1,11 @@
 @extends('master')
 
+@push('styles')
+
+    @yield('css')
+
+@endpush
+
 @section('app')
     {{-- Page Wrapper --}}
     <div id="wrapper">
@@ -41,5 +47,11 @@
         {{-- End Content Wrapper --}}
     </div>
     {{-- End Page Wrapper --}}
-
 @endsection
+
+
+@push('scripts')
+
+    @yield('js')
+
+@endpush

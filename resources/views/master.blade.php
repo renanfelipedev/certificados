@@ -19,6 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @stack('styles')
 </head>
 
 <body id="page-top" class="bg-gradient-light">
@@ -31,6 +33,9 @@
             language: 'pt-BR'
         })
     </script>
+
+
+    @stack('scripts')
 </body>
 
 </html>
