@@ -4,7 +4,7 @@
 
 @section('page-title-content')
 
-    <a href="{{ route('turmas.create') }}" class="btn btn-success btn-icon-split m-1 ">
+    <a href="{{ route('teams.create', $activity->id) }}" class="btn btn-success btn-icon-split m-1 ">
         <span class="icon text-white-50">
             <i class="fa fa-plus"></i>
         </span>
@@ -95,7 +95,8 @@
                         </a>
 
                         <x-delete-modal modalId="deleteModal-{{ $team->id }}" message="Deseja realmente excluir?"
-                            btnText="Excluir" formAction="{{ route('turmas.destroy', $team->id) }}"
+                            btnText="Excluir"
+                            formAction="{{ route('teams.destroy', ['id' => $activity->id, 'team' => $team->id]) }}"
                             formName="deleteForm{{ $team->id }}" />
                     </div>
                 </div>

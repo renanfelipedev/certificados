@@ -38,7 +38,7 @@
         <div class="collapse show" id="teamsCreate">
             <div class="card-body">
                 <br>
-                <form action="{{ route('turmas.store') }}" method="POST">
+                <form action="{{ route('teams.store', $activity->id) }}" method="POST">
                     @csrf
 
                     <div class="form-group row">

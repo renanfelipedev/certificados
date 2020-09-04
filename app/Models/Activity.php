@@ -26,6 +26,6 @@ class Activity extends Model
 
     public function teams()
     {
-        return $this->hasOne('App\Models\Team');
+        return $this->hasMany('App\Models\Team');
     }
 }

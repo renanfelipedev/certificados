@@ -64,7 +64,7 @@
                     Adicionar Participante
                 </button>
 
-                <button class="btn btn-secondary m-1">
+                <button class="btn btn-secondary m-1" data-toggle="modal" data-target="#importStudentModal">
                     Importar Participantes
                 </button>
 
@@ -74,6 +74,7 @@
             </div>
 
             @include('user.pages.students.create')
+            @include('user.pages.students.import')
 
             <div class="d-flex mt-1">
                 <button class="btn btn-danger btn-icon-split m-1">

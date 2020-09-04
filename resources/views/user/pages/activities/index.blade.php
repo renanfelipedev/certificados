@@ -34,9 +34,20 @@
         @foreach ($activities as $activity)
             <div class="card border-left-secondary mb-4">
                 <div class="card-body">
-                    <h5>
+                    <h5 class="d-flex align-items-center mb-4">
                         {{ $activity->type->title }}
+
+                        @if ($activity->teams->count() > 0)
+                            <a href="{{ route('teams.index', $activity->id) }}" class="ml-4 badge badge-light p-2">
+                                {{ $activity->teams->count() }}
+                                Turma{{ $activity->teams->count() > 1 ? 's' : '' }}
+                                cadastrada{{ $activity->teams->count() > 1 ? 's' : '' }}
+                            </a>
+                        @else
+                            <span class="ml-4 badge badge-secondary p-2">Nenhuma turma cadastrada</span>
+                        @endif
                     </h5>
+
                     <div class="d-flex w-100 align-items-center">
                         <h4 class="mr-4">
                             <strong>{{ $activity->title }}</strong>
@@ -53,17 +64,14 @@
                     </div> --}}
 
                     <div class="d-flex w-100">
-                        <a href="{{ route('create.teams.with.activity', $activity->id) }}"
-                            class="btn btn-secondary btn-icon-split m-1">
+                        <a href="{{ route('teams.create', $activity->id) }}" class="btn btn-primary btn-icon-split m-1">
                             <span class="icon text-white-50">
                                 <i class="fa fa-plus"></i>
                             </span>
                             <span class="text">
-                                Adicionar Turma
+                                Adicionar Nova Turma
                             </span>
-                            <span class="icon text-white-50">
-                                <i class="fa fa-info"></i>
-                            </span>
+
                         </a>
 
                         <button class="btn btn-secondary btn-icon-split m-1" data-toggle="modal"

@@ -43,9 +43,13 @@ Route::middleware(['checkActive', 'auth'])->group(function () {
     Route::namespace('User')->group(function () {
         Route::get('/painel', 'HomeController@index')->name('user.dashboard');
         Route::resource('/activities', 'ActivityController')->except('show');
-        Route::get('/activities/{id}/turmas', 'AddTeamWithActivityController')->name('create.teams.with.activity');
+
+        // Route::get('/activities/{id}/turmas', 'AddTeamWithActivityController')->name('create.teams.with.activity');
+
+        Route::resource('/atividades/{id}/teams', 'TeamWithActivityController');
         Route::resource('/turmas', 'TeamController');
         Route::resource('/turmas/{id}/alunos', 'StudentController');
+        Route::post('/turmas/{id}/alunos/importar', 'ImportStudentController')->name('alunos.import');
     });
 
 });
