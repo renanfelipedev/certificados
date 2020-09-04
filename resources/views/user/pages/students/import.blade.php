@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <form action="{{ route('alunos.import', $team->id) }}" method="POST" id="import-student-form"
-                    class="was-validated">
+                    enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group">
@@ -41,6 +41,7 @@
             document.addEventListener('DOMContentLoaded', () => {
                 $('#importStudentModal').modal('show');
             });
+
         </script>
     @endif
 @endsection

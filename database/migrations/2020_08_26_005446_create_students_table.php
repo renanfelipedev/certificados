@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('cpf')->unique();
+            $table->string('cpf');
             $table->string('birthdate')->nullable();
             $table->timestamps();
         });
