@@ -41,7 +41,7 @@
                 <p>
                     <strong class="mr-2">Modelo de certificado: </strong>
                     <span>
-                        <a href="#" class="badge badge-info p-2">
+                        <a href="{{ route('mostrar.certificado') }}" class="badge badge-info p-2" target="_blank">
                             Visualizar
                         </a>
 
