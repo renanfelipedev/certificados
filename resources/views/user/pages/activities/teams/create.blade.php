@@ -30,8 +30,8 @@
 
     <div class="card shadow">
 
-        {{-- <a href="#teamsCreate" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false"
-            aria-controls="teamsCreate">
+        {{-- <a href="#teamsCreate" class="d-block card-header py-3" data-toggle="collapse"
+            role="button" aria-expanded="false" aria-controls="teamsCreate">
             <h6 class="m-0 font-weight-bold text-primary">Cadastro de Nova atividade</h6>
         </a> --}}
 
@@ -43,19 +43,19 @@
 
                     <div class="form-group row">
                         <label for="activity_id" class="text-gray-700 col-lg-3 col-md-5 col-form-label">
-                            <strong>Selecione a
-                                atividade</strong>
+                            <strong>Selecione a atividade</strong>
                         </label>
                         <div class="col-lg-9 col-md-7">
                             <select name="activity_id" id="activity_id"
                                 class="custom-select @error('activity_id') is-invalid @enderror">
-                                <option value="{{ $activity->id }}" selected aria-readonly="true">{{ $activity->title }}</option>
+                                <option value="{{ $activity->id }}" selected aria-readonly="true">{{ $activity->title }}
+                                </option>
                             </select>
 
                             @error('activity_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                         <div class="form-group col-lg-12 my-4">
                             <label for="certificate_text">Texto do certificado</label>
                             <textarea name="certificate_text" id="certificate_text" class="form-control" cols="30"
-                                rows="10">{{ old('certificate_text') }}</textarea>
+                                rows="10">{{ old('certificate_text', 'Certificamos que #NOME#, inscrito sob CPF de número #CPF#, participou do #TIPO# #ATIVIDADE#, no período de #INÍCIO# a #TERMINO#, com carga horária de #CARGAHORARIA# horas.') }}</textarea>
                         </div>
                     </div>
 

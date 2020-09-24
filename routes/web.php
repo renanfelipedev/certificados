@@ -50,7 +50,7 @@ Route::middleware(['checkActive', 'auth'])->group(function () {
         Route::resource('/turmas', 'TeamController');
         Route::resource('/turmas/{id}/alunos', 'StudentController');
         Route::post('/turmas/{id}/alunos/importar', 'ImportStudentController')->name('alunos.import');
-        Route::post('/student/certificate', 'GenerateCertificateController')->name('alunos.certificado');
+        Route::get('/student/certificate/{id}', 'GenerateCertificateController')->name('alunos.certificado');
         Route::get('/certificate', 'GenerateCertificateController')->name('mostrar.certificado');
     });
 });

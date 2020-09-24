@@ -17,6 +17,12 @@
 
 @section('page-content')
 
+    <div class="card border-0 mb-5">
+        <div class="card-body">
+            <h2>Gestão de Turmas</h2>
+
+        </div>
+    </div>
     {{-- <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -32,7 +38,7 @@
         </div>
     @else
         @foreach ($teams as $team)
-            <div class="card border-left-secondary mb-4 ">
+            <div class="card border-left-info mb-4 ">
                 <div class="card-body">
                     <h4 class="d-flex align-items-center my-2">
                         <strong class="mr-4">
@@ -47,7 +53,7 @@
 
                     <div class="d-flex my-3">
                         <h5 class="mr-4">
-                            <strong>Participantes:</strong>
+                            <strong>Nº de Participantes:</strong>
                             <span class="text-gray-600">{{ $team->students->count() }}</span>
                         </h5>
                         <h5 class="mr-4">

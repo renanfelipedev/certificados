@@ -30,8 +30,8 @@
 
     <div class="card shadow">
 
-        {{-- <a href="#teamsCreate" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false"
-            aria-controls="teamsCreate">
+        {{-- <a href="#teamsCreate" class="d-block card-header py-3" data-toggle="collapse"
+            role="button" aria-expanded="false" aria-controls="teamsCreate">
             <h6 class="m-0 font-weight-bold text-primary">Cadastro de Nova atividade</h6>
         </a> --}}
 
@@ -41,27 +41,34 @@
                 <form action="{{ route('turmas.store') }}" method="POST">
                     @csrf
 
-                    <div class="form-group row">
+                    <div class="form-group row align-items-center">
                         <label for="activity_id" class="text-gray-700 col-lg-3 col-md-5 col-form-label">
                             <strong>Selecione a
                                 atividade</strong>
                         </label>
                         <div class="col-lg-9 col-md-7">
-                            <select name="activity_id" id="activity_id"
-                                class="custom-select @error('activity_id') is-invalid @enderror">
-                                <option value="" selected disabled></option>
-                                @foreach ($activities as $activity)
-                                    <option value="{{ $activity->id }}"
-                                        {{ old('activity_id') == $activity->id ? 'selected' : '' }}>
-                                        {{ $activity->title }} - {{ $activity->workload }} Horas
-                                    </option>
-                                @endforeach
-                            </select>
+                            @empty($activities)
+                                <a href="{{ route('activities.create') }}" class="btn btn-light">Cadastre sua primeira
+                                    atividade</a>
+                            @else
+
+                                <select name="activity_id" id="activity_id"
+                                    class="custom-select @error('activity_id') is-invalid @enderror">
+                                    <option value="" selected disabled>Selecione a atividade</option>
+                                    @foreach ($activities as $activity)
+                                        <option value="{{ $activity->id }}"
+                                            {{ old('activity_id') == $activity->id ? 'selected' : '' }}>
+                                            {{ $activity->title }} - {{ $activity->workload }} Horas
+                                        </option>
+                                    @endforeach
+                                </select>
+
+                            @endempty
 
                             @error('activity_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                     </div>

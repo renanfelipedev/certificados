@@ -63,7 +63,8 @@
         }
 
     </style>
-    <title>Certificado</title>
+
+    <title>{{ $title ?? 'Certificado' }}</title>
 </head>
 
 <body style="background: url({{ storage_path('app/certificate/background.png') }})">
@@ -73,9 +74,7 @@
     <main>
         <div class="">
             <h2 class="text-justify">
-                Certificamos que #NOME#, inscrito sob CPF de número #CPF#, participou do #TIPO# #ATIVIDADE#, no período
-                de
-                #INÍCIO# a #TERMINO#, com carga horária de #CARGAHORARIA# horas.
+                {{ $certificate_text ?? '' }}
             </h2>
         </div>
     </main>

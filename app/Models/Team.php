@@ -15,10 +15,6 @@ class Team extends Model
         'title', 'certificate_text', 'start', 'end', 'activity_id',
     ];
 
-    protected $with = [
-        'activity', 'students'
-    ];
-
     public function activity()
     {
         return $this->belongsTo('App\Models\Activity');

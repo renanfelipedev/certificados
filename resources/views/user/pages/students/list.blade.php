@@ -30,14 +30,15 @@
                                 Editar
                             </span>
                         </button>
-                        <button class="btn btn-secondary btn-icon-split m-1">
+                        <a href="{{ route('alunos.certificado', $student->id) }}" target="__blank"
+                            class="btn btn-secondary btn-icon-split m-1">
                             <span class="icon text-white-50">
                                 <i class="fa fa-print"></i>
                             </span>
                             <span class="text">
-                                Imprimir
+                                Imprimir Certificado
                             </span>
-                        </button>
+                        </a>
                     </td>
                 </tr>
             @empty
@@ -49,4 +50,3 @@
         </tbody>
     </table>
 </div>
-

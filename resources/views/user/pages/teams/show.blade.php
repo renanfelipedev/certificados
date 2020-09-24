@@ -58,7 +58,6 @@
 
     <div class="card border-0">
         <div class="card-body">
-            <strong>Participantes: </strong>
             <div class="d-flex justify-content-center mt-4">
                 <button class="btn btn-secondary m-1" data-toggle="modal" data-target="#createStudentModal">
                     Adicionar Participante

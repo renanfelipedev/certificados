@@ -26,13 +26,19 @@
         </ol>
     </nav> --}}
 
+    <div class="card border-0 mb-5">
+        <div class="card-body">
+            <h2 class="page-header">Gestão de Atividades</h2>
+        </div>
+    </div>
+
     @if (count($activities) < 1)
         <div class="alert alert-primary">
             <i class="fa fa-info-circle"></i> Nenhuma atividade cadastrada
         </div>
     @else
         @foreach ($activities as $activity)
-            <div class="card border-left-secondary mb-4">
+            <div class="card border-left-success mb-4">
                 <div class="card-body">
                     <h5 class="d-flex align-items-center mb-4">
                         {{ $activity->type->title }}
@@ -44,7 +50,7 @@
                                 cadastrada{{ $activity->teams->count() > 1 ? 's' : '' }}
                             </a>
                         @else
-                            <span class="ml-4 badge badge-secondary p-2">Nenhuma turma cadastrada</span>
+                            <span class="ml-4 badge badge-light p-2">Nenhuma turma cadastrada nessa atividade</span>
                         @endif
                     </h5>
 
