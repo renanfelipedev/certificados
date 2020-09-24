@@ -100,7 +100,7 @@
                         <div class="form-group col-lg-12 my-4">
                             <label for="certificate_text">Texto do certificado</label>
                             <textarea name="certificate_text" id="certificate_text" class="form-control" cols="30"
-                                rows="10">{{ old('certificate_text', 'Certificamos que #NOME#, inscrito sob CPF de número #CPF#, participou do #TIPO# #ATIVIDADE#, no período de #INÍCIO# a #TERMINO#, com carga horária de #CARGAHORARIA# horas.') }}</textarea>
+                                rows="10">{{ old('certificate_text', 'Certificamos que #NOME#, inscrito sob CPF de número #CPF#, participou do #TIPO# #ATIVIDADE#, no período de #INICIO# a #TERMINO#, com carga horária de #CARGAHORARIA# horas.') }}</textarea>
                         </div>
                     </div>
 

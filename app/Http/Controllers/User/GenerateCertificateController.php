@@ -29,13 +29,13 @@ class GenerateCertificateController extends Controller
 
             $certificate_text = str_replace('#TIPO#', $activity_type->title, $certificate_text);
 
-            $certificate_text = str_replace('#INÍCIO#', date('d/m/Y', strtotime($team->start)), $certificate_text);
+            $certificate_text = str_replace('#INICIO#', date('d/m/Y', strtotime($team->start)), $certificate_text);
             $certificate_text = str_replace('#TERMINO#', date('d/m/Y', strtotime($team->end)), $certificate_text);
         }
 
         $pdf = PDF::loadView('user.layouts.certificate', [
-            'certificate_text' => $certificate_text,
-            'title' => $student->name,
+            'certificate_text' => isset($certificate_text) ? $certificate_text : '',
+            'title' => isset($student->name) ? $student->name : '',
         ]);
 
         $pdf->setPaper('a4', 'landscape');
