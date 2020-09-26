@@ -4,8 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 
+
 use App\Models\Student;
 
+use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade as PDF;
 
 class GenerateCertificateController extends Controller
@@ -33,9 +35,12 @@ class GenerateCertificateController extends Controller
             $certificate_text = str_replace('#TERMINO#', date('d/m/Y', strtotime($team->end)), $certificate_text);
         }
 
+        $uuid = Str::uuid();
+
         $pdf = PDF::loadView('user.layouts.certificate', [
             'certificate_text' => isset($certificate_text) ? $certificate_text : '',
             'title' => isset($student->name) ? $student->name : '',
+            'uuid' => $uuid,
         ]);
 
         $pdf->setPaper('a4', 'landscape');

@@ -28,7 +28,12 @@
 
     <div class="card border-0 mb-5">
         <div class="card-body">
-            <h2>Gestão de Turmas</h2>
+            <h2>Gestão de Turmas -
+                <small>
+                    {{ $activity->type->title }}
+                    {{ $activity->title }}
+                </small>
+            </h2>
 
         </div>
     </div>

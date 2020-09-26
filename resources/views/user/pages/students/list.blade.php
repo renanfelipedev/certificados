@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-striped table-borderless table-sm mt-4 p-1">
+    <table class="table table-borderless table-sm mt-4 p-1">
         <thead>
             <tr>
                 <th>#</th>
@@ -22,8 +22,8 @@
                     <td>{{ $student->email }}</td>
                     <td class="">{{ $student->cpf }}</td>
                     <td class="float-right">
-                        <button class="btn btn-secondary btn-icon-split m-1">
-                            <span class="icon text-white-50">
+                        <button class="btn btn-light btn-icon-split m-1">
+                            <span class="icon">
                                 <i class="fa fa-edit"></i>
                             </span>
                             <span class="text">
@@ -31,12 +31,12 @@
                             </span>
                         </button>
                         <a href="{{ route('alunos.certificado', $student->id) }}" target="__blank"
-                            class="btn btn-secondary btn-icon-split m-1">
-                            <span class="icon text-white-50">
-                                <i class="fa fa-print"></i>
+                            class="btn btn-light btn-icon-split m-1">
+                            <span class="icon">
+                                <i class="fa fa-file-pdf"></i>
                             </span>
                             <span class="text">
-                                Imprimir Certificado
+                                Gerar Certificado
                             </span>
                         </a>
                     </td>

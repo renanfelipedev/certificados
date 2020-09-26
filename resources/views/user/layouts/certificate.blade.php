@@ -74,14 +74,18 @@
     <main>
         <div class="">
             <h2 class="text-justify">
-                {{ $certificate_text ?? '' }}
+                @empty($certificate_text)
+                    {{ 'Certificamos que #NOME#, inscrito sob CPF de número #CPF#, participou do #TIPO# #ATIVIDADE#, no período de #INICIO# a #TERMINO#, com carga horária de #CARGAHORARIA# horas.' }}
+                @else
+                    {{ $certificate_text }}
+                @endempty
             </h2>
         </div>
     </main>
 
     <footer>
         <strong>Código de verificação</strong>
-        <span class="code">b29c85d1-d105-45fb-82bb-bfed77da9404</span>
+        <span class="code">{{ $uuid }}</span>
     </footer>
 </body>
 

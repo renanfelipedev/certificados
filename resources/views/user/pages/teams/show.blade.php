@@ -16,15 +16,26 @@
 @section('page-content')
 
     <div class="card border-0">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h4>
                 <strong>Turma {{ $team->title }} - {{ $team->activity->title }}</strong>
             </h4>
+            <span class="ml-4">
+                <a class="btn btn-sm btn-outline-secondary" href="{{ route('turmas.edit', $team->id) }}">
+                    <i class="fa fa-edit"></i> Editar turma
+                </a>
+            </span>
         </div>
         <div class="card-body">
-            <strong>Informações sobre o evento:</strong>
+            <h5 class=""><strong>Informações sobre o evento</strong></h5>
 
             <div class="mt-4">
+                <p>
+                    <strong>Nº de Participantes:</strong>
+                    <span class="text-gray-600">
+                        {{ $team->students->count() }}
+                    </span>
+                </p>
                 <p>
                     <strong>Período de Realização:</strong>
                     <span class="text-gray-600">

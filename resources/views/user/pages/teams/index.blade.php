@@ -19,7 +19,7 @@
 
     <div class="card border-0 mb-5">
         <div class="card-body">
-            <h2>Gestão de Turmas</h2>
+            <h2>Todas as Turmas</h2>
 
         </div>
     </div>
@@ -79,7 +79,6 @@
                                 Detalhes
                             </span>
                         </a>
-
 
                         <a href="{{ route('turmas.edit', $team->id) }}" class="btn btn-secondary btn-icon-split m-1 ">
                             <span class="icon text-white-50">
