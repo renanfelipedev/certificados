@@ -19,6 +19,7 @@ class CreateTeamsTable extends Migration
             $table->string('title');
             $table->text('certificate_text')
                 ->default('Certificamos que #NOME#, inscrito sob CPF de número #CPF#, participou do #TIPO# #ATIVIDADE#, no período de #INICIO# a #TERMINO#, com carga horária de #CARGAHORARIA# horas.');
+            $table->text('certificate_image')->nullable();
 
             $table->date('start')->nullable();
             $table->date('end')->nullable();

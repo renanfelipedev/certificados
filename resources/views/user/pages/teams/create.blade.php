@@ -47,11 +47,11 @@
                                 atividade</strong>
                         </label>
                         <div class="col-lg-9 col-md-7">
-                            @empty($activities)
+                            @if($activities->count() < 1)
                                 <a href="{{ route('activities.create') }}" class="btn btn-light">Cadastre sua primeira
                                     atividade</a>
                             @else
-
+                                    {{ die($activities) }}
                                 <select name="activity_id" id="activity_id"
                                     class="custom-select @error('activity_id') is-invalid @enderror">
                                     <option value="" selected disabled>Selecione a atividade</option>
@@ -63,7 +63,7 @@
                                     @endforeach
                                 </select>
 
-                            @endempty
+                            @endif
 
                             @error('activity_id')
                             <span class="invalid-feedback" role="alert">

@@ -67,7 +67,7 @@
     <title>{{ $title ?? 'Certificado' }}</title>
 </head>
 
-<body style="background: url({{ storage_path('app/certificate/default.png') }})">
+<body style="background: url({{ storage_path("app/$certificate_image") }})">
     <header>
 
     </header>

@@ -52,13 +52,17 @@
                 <p>
                     <strong class="mr-2">Modelo de certificado: </strong>
                     <span>
-                        <a href="{{ route('mostrar.certificado') }}" class="badge badge-info p-2" target="_blank">
+                        <a href="{{ route('mostrar.certificado', $team->id) }}" class="badge badge-info p-2"
+                            target="_blank">
                             Visualizar
                         </a>
 
                         <button class="badge badge-info p-2" data-toggle="modal" data-target="#changeCertificateModal">
                             Alterar Modelo
                         </button>
+                        @error('file')
+                            <span class="badge badge-danger">{{ $message }}</span>
+                        @enderror
 
                         @include('user.pages.teams.change-certificate')
                     </span>

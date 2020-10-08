@@ -44,14 +44,13 @@ Route::middleware(['checkActive', 'auth'])->group(function () {
         Route::get('/painel', 'HomeController@index')->name('user.dashboard');
         Route::resource('/activities', 'ActivityController')->except('show');
 
-        // Route::get('/activities/{id}/turmas', 'AddTeamWithActivityController')->name('create.teams.with.activity');
-
         Route::resource('/atividades/{id}/teams', 'TeamWithActivityController');
         Route::resource('/turmas', 'TeamController');
         Route::resource('/turmas/{id}/alunos', 'StudentController');
         Route::post('/turmas/{id}/alunos/importar', 'ImportStudentController')->name('alunos.import');
-        Route::post('/turmas/{team}/certificados/alterar', 'UploadCertificateController')->name('alterar.certificado');
-        Route::get('/student/certificate/{id}', 'GenerateCertificateController')->name('alunos.certificado');
-        Route::get('/certificate', 'GenerateCertificateController')->name('mostrar.certificado');
+
+        Route::get('/turmas/{team}/certificado', 'Certificate\GenerateCertificateController')->name('mostrar.certificado');
+        Route::get('/alunos/{student}/certificado', 'Certificate\GenerateCertificateController')->name('alunos.certificado');
+        Route::post('/turmas/{team}/certificados/alterar', 'Certificate\UploadCertificateController')->name('alterar.certificado');
     });
 });
