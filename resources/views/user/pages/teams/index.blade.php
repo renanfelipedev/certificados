@@ -76,7 +76,7 @@
                                 <i class="fa fa-search"></i>
                             </span>
                             <span class="text">
-                                Detalhes
+                                Ver Detalhes
                             </span>
                         </a>
 

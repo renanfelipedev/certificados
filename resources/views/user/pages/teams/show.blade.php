@@ -56,9 +56,11 @@
                             Visualizar
                         </a>
 
-                        <a href="#" class="badge badge-info p-2">
+                        <button class="badge badge-info p-2" data-toggle="modal" data-target="#changeCertificateModal">
                             Alterar Modelo
-                        </a>
+                        </button>
+
+                        @include('user.pages.teams.change-certificate')
                     </span>
                 </p>
             </div>
