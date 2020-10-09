@@ -50,7 +50,7 @@ class GenerateCertificateController extends Controller
             'certificate_text' => isset($certificate_text) ? $certificate_text : '',
             'certificate_image' => isset($certificate_image) ? $certificate_image : 'certificate/default.png',
             'title' => isset($student->name) ? $student->name : 'Modelo',
-            'uuid' => !!$certificate_uuid ? $certificate_uuid : Str::uuid(),
+            'uuid' => isset($certificate_uuid) ? $certificate_uuid : Str::uuid(),
         ]);
 
         $pdf->setPaper('a4', 'landscape');
