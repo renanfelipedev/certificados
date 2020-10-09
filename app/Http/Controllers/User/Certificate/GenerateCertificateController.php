@@ -23,9 +23,13 @@ class GenerateCertificateController extends Controller
         if (isset($student)) {
             $activity = $student->team->activity;
             $activity_type = $student->team->activity->type;
+
             $team = $student->team;
+
             $certificate_text = $team->certificate_text;
             $certificate_image = $team->certificate_image;
+            $certificate_uuid = $student->certificate_uuid;
+
             $formatted_cpf = substr($student->cpf, 0, 3) . '.' . substr($student->cpf, 3, 3) . '.' . substr($student->cpf, 6, 3) . '-' . substr($student->cpf, 9);
 
             $certificate_text = str_replace('#NOME#', $student->name, $certificate_text);
@@ -46,7 +50,7 @@ class GenerateCertificateController extends Controller
             'certificate_text' => isset($certificate_text) ? $certificate_text : '',
             'certificate_image' => isset($certificate_image) ? $certificate_image : 'certificate/default.png',
             'title' => isset($student->name) ? $student->name : 'Modelo',
-            'uuid' => $uuid,
+            'uuid' => !!$certificate_uuid ? $certificate_uuid : Str::uuid(),
         ]);
 
         $pdf->setPaper('a4', 'landscape');

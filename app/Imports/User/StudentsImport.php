@@ -6,6 +6,8 @@ use Maatwebsite\Excel\Row;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
+use Illuminate\Support\Str;
+
 use App\Models\Team;
 
 class StudentsImport implements OnEachRow, WithHeadingRow
@@ -27,6 +29,7 @@ class StudentsImport implements OnEachRow, WithHeadingRow
             'name' => $row['nome'],
             'cpf' => $row['cpf'],
             'email' => $row['email'],
+            'certificate_uuid' => Str::uuid()
         ]);
     }
 }

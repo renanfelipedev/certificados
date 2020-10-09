@@ -36,7 +36,7 @@
                                 <i class="fa fa-file-pdf"></i>
                             </span>
                             <span class="text">
-                                Gerar Certificado
+                                Emitir Certificado
                             </span>
                         </a>
                     </td>

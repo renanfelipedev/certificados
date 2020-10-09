@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('email');
             $table->string('cpf');
             $table->string('birthdate')->nullable();
+            $table->string('certificate_uuid')->nullable();
             $table->timestamps();
         });
     }

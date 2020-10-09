@@ -57,9 +57,9 @@
                             Visualizar
                         </a>
 
-                        <button class="badge badge-info p-2" data-toggle="modal" data-target="#changeCertificateModal">
+                        <a href="" class="badge badge-info p-2" data-toggle="modal" data-target="#changeCertificateModal">
                             Alterar Modelo
-                        </button>
+                        </a>
                         @error('file')
                             <span class="badge badge-danger">{{ $message }}</span>
                         @enderror
@@ -84,7 +84,7 @@
                     Importar Participantes
                 </button>
 
-                <button class="btn btn-secondary m-1">
+                <button class="btn btn-secondary m-1" disabled>
                     Enviar Certificado por E-mail
                 </button>
             </div>
@@ -93,7 +93,7 @@
             @include('user.pages.students.import')
 
             <div class="d-flex mt-1">
-                <button class="btn btn-danger btn-icon-split m-1">
+                <button class="btn btn-danger btn-icon-split m-1" disabled>
                     <span class="icon text-white-50">
                         <i class="fa fa-trash"></i>
                     </span>

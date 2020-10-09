@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\Team;
 
@@ -18,9 +19,13 @@ class StudentController extends Controller
             'birthdate' => ['nullable', 'date'],
         ]);
 
+        $data = $request->all();
+
+        $data['certificate_uuid'] = Str::uuid();
+
         $team = Team::find($id);
 
-        $team->students()->create($request->all());
+        $team->students()->create($data);
 
         return redirect()->route('turmas.show', $id);
     }
