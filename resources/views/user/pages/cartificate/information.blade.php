@@ -1,3 +1,5 @@
+{{ json_encode($student) }}
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -75,15 +77,7 @@
 
 <body>
     <div class="container">
-        <form action="{{ route('validar.certificado') }}" class="form-validar-certificado" method="POST">
-            @csrf
 
-            <h1 class="h4 mb-3 text-center font-weight-normal">Informe o código de validação</h1>
-            <label for="code" class="sr-only">Password</label>
-            <input type="text" id="code" name="code" class="form-control" placeholder="Código de validação" autofocus required>
-
-            <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Validar</button>
-        </form>
     </div>
 </body>
 
