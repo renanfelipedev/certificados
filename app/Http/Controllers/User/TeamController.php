@@ -57,7 +57,7 @@ class TeamController extends Controller
     public function edit($id)
     {
         $activities = Activity::orderBy('title')->get();
-        $team = Team::find($id);
+        $team = Team::findOrFail($id);
 
         return view('user.pages.teams.edit', [
             'activities' => $activities,
@@ -75,7 +75,7 @@ class TeamController extends Controller
             'activity_id' => ['required', 'numeric'],
         ]);
 
-        $team = Team::find($id);
+        $team = Team::findOrFail($id);
 
         $team->update($request->all());
 
@@ -84,7 +84,7 @@ class TeamController extends Controller
 
     public function destroy($id)
     {
-        Team::find($id)->delete();
+        Team::findOrFail($id)->delete();
 
         return redirect()->back();
     }

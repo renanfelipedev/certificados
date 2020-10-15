@@ -23,7 +23,7 @@ class StudentController extends Controller
 
         $data['certificate_uuid'] = Str::uuid();
 
-        $team = Team::find($id);
+        $team = Team::findOrFail($id);
 
         $team->students()->create($data);
 

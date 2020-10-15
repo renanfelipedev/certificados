@@ -44,8 +44,6 @@ class GenerateCertificateController extends Controller
             $certificate_text = str_replace('#TERMINO#', date('d/m/Y', strtotime($team->end)), $certificate_text);
         }
 
-        $uuid = Str::uuid();
-
         $pdf = PDF::loadView('user.layouts.certificate', [
             'certificate_text' => isset($certificate_text) ? $certificate_text : '',
             'certificate_image' => isset($certificate_image) ? $certificate_image : 'certificate/default.png',

@@ -76,6 +76,16 @@
                                     <div class="text-center">
                                         <a class="small" href="{{ route('register') }}">Cria uma conta!</a>
                                     </div>
+                                    <br>
+                                    <div class="text-center">
+                                        <a href="{{ route('validar.certificado') }}"
+                                            class="btn btn-sm btn-light btn-icon-split">
+                                            <span class="text">Valide seu certificado</span>
+                                            <span class="icon text-gray-600">
+                                                <i class="fas fa-check"></i>
+                                            </span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

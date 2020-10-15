@@ -11,7 +11,7 @@ class ToggleUserActivationController extends Controller
 {
     public function __invoke($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         $user->active = !$user->active;
 

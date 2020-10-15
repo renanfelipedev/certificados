@@ -19,29 +19,27 @@
 
     <style>
         html,
-        body {
+        body,
+        main {
             height: 100%;
-        }
-
-        body {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
             background-color: #f5f5f5;
         }
 
-        .form-validar-certificado {
-            width: 100%;
-            max-width: 330px;
-            padding: 15px;
-            margin: auto;
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
         }
 
-        .form-validar-certificado .checkbox {
-            font-weight: 400;
+        .form-validar-certificado {
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
+
+            margin: auto;
         }
 
         .form-validar-certificado .form-control {
@@ -74,17 +72,37 @@
 </head>
 
 <body>
-    <div class="container">
-        <form action="{{ route('validar.certificado') }}" class="form-validar-certificado" method="POST">
-            @csrf
+    <main>
+        <div class="container">
+            <form action="{{ route('verificar.certificado') }}" class="form-validar-certificado" method="POST">
+                @csrf
 
-            <h1 class="h4 mb-3 text-center font-weight-normal">Informe o código de validação</h1>
-            <label for="code" class="sr-only">Password</label>
-            <input type="text" id="code" name="code" class="form-control" placeholder="Código de validação" autofocus required>
+                <h1 class="h4 mb-3 text-center font-weight-normal">Informe o código de validação</h1>
+                <div class="form-group">
 
-            <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Validar</button>
-        </form>
-    </div>
+                    <label for="code" class="sr-only">Password</label>
+                    <input type="text" id="code" name="code"
+                        class="form-control form-control-user @empty($errors->verify) is-invalid @endempty"
+                        placeholder="Código de validação" autofocus required>
+                    @if ($errors->verify->first())
+                        <span class="invalid-feedback">{{ $errors->verify->firsT() }}</span>
+                    @endif
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-block btn-success mt-3" type="submit">
+                        <i class="fa fa-check mr-2"></i> Validar
+                    </button>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <a href="{{ route('login') }}" class="btn btn-block btn-sm btn-light mt-3" type="submit">
+                        <i class="fa fa-arrow-left mr-2"></i> Voltar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>

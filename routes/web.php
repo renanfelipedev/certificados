@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/certificado/validar', 'User\Certificate\ValidateCertificateController@showForm')->name('validar.certificado');
-Route::post('/certificado/verificar', 'User\Certificate\ValidateCertificateController@verify')->name('validar.certificado');
+Route::post('/certificado/verificar', 'User\Certificate\ValidateCertificateController@verify')->name('verificar.certificado');
 
 Route::middleware(['checkActive', 'auth'])->group(function () {
     Route::redirect('/', '/dashboard', 301);
