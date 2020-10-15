@@ -81,12 +81,8 @@
                 <div class="form-group">
 
                     <label for="code" class="sr-only">Password</label>
-                    <input type="text" id="code" name="code"
-                        class="form-control form-control-user @empty($errors->verify) is-invalid @endempty"
+                    <input class="form-control form-control-user" type="text" id="code" name="code"
                         placeholder="Código de validação" autofocus required>
-                    @if ($errors->verify->first())
-                        <span class="invalid-feedback">{{ $errors->verify->firsT() }}</span>
-                    @endif
                 </div>
 
                 <div class="form-group">
@@ -94,6 +90,10 @@
                         <i class="fa fa-check mr-2"></i> Validar
                     </button>
                 </div>
+                @if ($errors->verify->first())
+                    <div class="alert alert-danger text-center">{{ $errors->verify->firsT() }}</div>
+
+                @endif
                 <hr>
                 <div class="form-group">
                     <a href="{{ route('login') }}" class="btn btn-block btn-sm btn-light mt-3" type="submit">
